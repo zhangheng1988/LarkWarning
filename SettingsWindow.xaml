@@ -1,0 +1,104 @@
+<Window x:Class="LarkWarning.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LarkWarning · 牛马互助设置"
+        Width="460" Height="620"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        ResizeMode="CanMinimize">
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 标题提示 -->
+        <TextBlock Grid.Row="0" Text="⚙ 牛马互助预警｜摸鱼有风险，互相报平安"
+                   FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+
+            <!-- 网络 -->
+            <GroupBox Header="同事互联" Padding="8" Margin="0,0,0,8">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="广播端口（同一小组保持一致）：" VerticalAlignment="Center"/>
+                    <TextBox x:Name="TxtPort" Width="80" Margin="8,0,0,0"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- 宠物 -->
+            <GroupBox Header="预警信号" Padding="8" Margin="0,0,0,8">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                        <TextBlock Text="日常摸鱼：" Width="90" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="CmbNormal" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="老板突袭：" Width="90" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="CmbUrgent" Width="200"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- 外观 -->
+            <GroupBox Header="信号外观" Padding="8" Margin="0,0,0,8">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                        <TextBlock Text="信号大小：" Width="90" VerticalAlignment="Center"/>
+                        <Slider x:Name="SldSize" Minimum="60" Maximum="400" Width="180" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="LblSize" Width="40" Margin="6,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Text="信号出现位置：" Margin="0,4,0,4"/>
+                    <UniformGrid Columns="2">
+                        <RadioButton x:Name="RbTL" Content="↖ 左上角" GroupName="corner"/>
+                        <RadioButton x:Name="RbTR" Content="↗ 右上角" GroupName="corner"/>
+                        <RadioButton x:Name="RbBL" Content="↙ 左下角" GroupName="corner"/>
+                        <RadioButton x:Name="RbBR" Content="↘ 右下角" GroupName="corner"/>
+                        <RadioButton x:Name="RbCenter" Content="⊙ 屏幕中心" GroupName="corner"/>
+                    </UniformGrid>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- 热键 -->
+            <GroupBox Header="暗号热键（格式：ctrl+alt+字母）" Padding="8" Margin="0,0,0,8">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                        <TextBlock Text="日常摸鱼：" Width="90" VerticalAlignment="Center"/>
+                        <TextBox x:Name="TxtHotNormal" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                        <TextBlock Text="老板突袭：" Width="90" VerticalAlignment="Center"/>
+                        <TextBox x:Name="TxtHotUrgent" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                        <TextBlock Text="解除警报：" Width="90" VerticalAlignment="Center"/>
+                        <TextBox x:Name="TxtHotClear" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="呼出设置：" Width="90" VerticalAlignment="Center"/>
+                        <TextBox x:Name="TxtHotSettings" Width="200"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- 高级 -->
+            <GroupBox Header="后台模式" Padding="8">
+                <StackPanel>
+                    <CheckBox x:Name="ChkSound" Content="收到信号时滴一声（建议关闭）" Margin="0,0,0,4"/>
+                    <CheckBox x:Name="ChkAutoStart" Content="开机自动启动，安静守护摸鱼"/>
+                </StackPanel>
+            </GroupBox>
+
+        </StackPanel>
+        </ScrollViewer>
+
+        <!-- 底部按钮 -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="结束摸鱼" Width="90" Margin="0,0,8,0" Click="OnQuit"/>
+            <Button Content="取消" Width="90" Margin="0,0,8,0" Click="OnCancel"/>
+            <Button Content="保存并重启" Width="110" Background="#4a90d9" Foreground="White" Click="OnSave"/>
+        </StackPanel>
+    </Grid>
+</Window>

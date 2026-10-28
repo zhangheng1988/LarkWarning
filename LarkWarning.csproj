@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- WPF 项目：需要 Windows 桌面运行时 -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>          <!-- 不弹黑控制台窗口 -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>  <!-- 用 WinForms 的 NotifyIcon 做系统托盘 -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>LarkWarning</AssemblyName>
+  </PropertyGroup>
+
+  <!--
+    把 config.ini 复制到 exe 同目录。
+    PreserveNewest = 编译时如果源文件比目标新才覆盖，
+    这样用户改了自己电脑上的 config.ini，重新编译不会被模板盖掉。
+  -->
+  <ItemGroup>
+    <None Update="config.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

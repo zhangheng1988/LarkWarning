@@ -1,0 +1,21 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# .NET build output
+[Bb]in/
+[Oo]bj/
+
+# Test results and coverage
+TestResults/
+*.trx
+coverage/
+
+# Local configuration and generated files
+*.userprefs
+config.local.ini
+
+# OS files
+.DS_Store
+Thumbs.db
